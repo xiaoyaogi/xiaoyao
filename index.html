@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="http://154.204.178.178/uploads/cd1cac334345f426f7218c2b33cb6383.jpg
+" type="image/x-icon">
+
+    <title>年龄计算器</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 5s ease infinite;
+            font-family: Arial, sans-serif;
+        }
+
+
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        input[type="number"] {
+    width: 200px; /* 输入框宽度 */
+    padding: 10px; /* 内边距 */
+    margin-bottom: 20px; /* 外边距 */
+    border: none; /* 无边框 */
+    border-radius: 5px; /* 圆角边框 */
+    background-color: rgba(255, 255, 255, 0.09); /* 半透明背景色，RGBA格式，最后一个数字代表透明度，这里是50% */
+    color: #000; /* 文字颜色 */
+}
+
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #fff;
+        }
+         #textContainer {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            display: none; /* 初始状态隐藏文字 */
+        }
+
+        .shrinkAndFadeOut {
+            animation: shrinkAndFadeOut 2s forwards;
+        }
+
+        @keyframes shrinkAndFadeOut {
+            0% {
+                opacity: 1;
+                font-size: 24px;
+            }
+            100% {
+                opacity: 0;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+ 
+    <div class="container">
+        <h1>年龄计算器</h1>
+        <form id="ageForm">
+            <label for="birthyear">请输入您的出生年份：</label>
+            <input type="number" id="birthyear" name="birthyear" min="1925" required>
+            <button id="bgMusic" type="submit">计算年龄</button>
+        </form>
+            <audio id="bgMusic" preload="auto">
+        <source src="http://wp.xn--yet0b.fun/down.php/fbb4a1ebc2fa750f1669de2476f5e1af.mp3" type="audio/mpeg">
+        您的浏览器不支持 audio 元素。
+    </audio>
+        <div id="result"></div>
+        <div id="textContainer"></div>
+    </div>
+    <script>
+        document.getElementById('ageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var birthyear = parseInt(document.getElementById('birthyear').value);
+            if (isNaN(birthyear)) {
+                alert("请输入有效的年份。");//警告
+                return;
+            }
+
+            var currentYear = new Date().getFullYear();//获取现在时间 
+            var age = currentYear - birthyear;//计算
+            document.getElementById('result').textContent = '您的年龄是 ' + age + ' 岁。';//输出
+        });
+    </script>
+      <script>
+       document.addEventListener('click', function(event) {
+            var textContainer = document.getElementById('textContainer');
+            textContainer.textContent = '欢迎！小尧制作,公益！'; // 设置显示的文字
+            textContainer.style.display = 'block'; // 显示文字
+            textContainer.classList.add('shrinkAndFadeOut'); // 添加动画类
+        });
+        
+    </script>
+</body>
+      </html>
